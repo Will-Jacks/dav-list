@@ -1,15 +1,21 @@
-import './App.css'
-import DavCreator from './components/DavCreator/DavCreator'
-import RenderDav from './components/RenderDav/RenderDav'
-import { DavProvider } from './context/DavContext'
-
+import './App.css';
+import DavCreator from './components/DavCreator/DavCreator.jsx';
+import RenderDavCriada from './components/RenderDav/RenderDavCriada.jsx';
+import RenderDavFaturada from './components/RenderDav/RenderDavFaturada.jsx';
+import { DavProvider } from './context/DavContext.jsx';
 function App() {
 
   return (
     <>
       <DavProvider>
         <DavCreator />
-        <RenderDav />
+        
+        <div className='rendered-davs-container'>
+          <RenderDavFaturada />
+          <RenderDavCriada />
+        </div>
+
+
       </DavProvider>
     </>
   )

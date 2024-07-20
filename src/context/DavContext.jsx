@@ -15,12 +15,13 @@ export class Dav {
 
 // eslint-disable-next-line react/prop-types
 export function DavProvider({ children }) {
-    const [davs, setDavs] = useState([]);
+    const [davsFaturadas, setDavsFaturadas] = useState([]);
+    const [davsCriadas, setDavsCriadas] = useState([]);
     const [davInput, setDavInput] = useState('');
     const [davType, setDavType] = useState('dav-criada');
 
     return (
-        <DavContext.Provider value={{ davs, setDavs, davInput, setDavInput, davType, setDavType }}>
+        <DavContext.Provider value={{ davsFaturadas, setDavsFaturadas, davsCriadas, setDavsCriadas, davInput, setDavInput, davType, setDavType }}>
             {children}
         </DavContext.Provider>
     )
