@@ -28,10 +28,9 @@ export default function DavCreator() {
                 <label htmlFor="">DAV </label>
                 <input type="text" onChange={(e) => setDavInput(e.target.value)} value={davInput} />
                 <select value={davType} onChange={(e) => setDavType(e.target.value)}>
-                    <option value="dav-criada">Dav criada</option>
+                    <option value="dav-criada">Dav lançada</option>
                     <option value="dav-faturada">Dav faturada</option>
                 </select>
-
                 <button type="submit">Finalizar</button>
             </form>
         </>

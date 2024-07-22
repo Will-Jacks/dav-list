@@ -6,7 +6,7 @@ export default function RenderDavFaturada() {
 
     return (
         <div>
-            <h2>Dav faturada</h2>
+            <h2 className="main-title">Dav faturada</h2>
             {davsFaturadas.map((item, key) => {
                 return (
                     <div key={key}>

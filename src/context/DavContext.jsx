@@ -1,4 +1,4 @@
-import { createContext, useContext, useState} from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 const DavContext = createContext();
 
@@ -19,6 +19,44 @@ export function DavProvider({ children }) {
     const [davsCriadas, setDavsCriadas] = useState([]);
     const [davInput, setDavInput] = useState('');
     const [davType, setDavType] = useState('dav-criada');
+
+    useEffect(() => {
+        try {
+            const savedDavsFaturadas = JSON.parse(localStorage.getItem('davsFaturadas'));
+            const savedDavsCriadas = JSON.parse(localStorage.getItem('davsCriadas'));
+
+            if (savedDavsFaturadas && savedDavsFaturadas.length > 0) {
+                setDavsFaturadas(savedDavsFaturadas);
+                console.log("Davs Faturadas carregadas do localStorage:", savedDavsFaturadas);
+            }
+            if (savedDavsCriadas && savedDavsCriadas.length > 0) {
+                setDavsCriadas(savedDavsCriadas);
+                console.log("Davs Criadas carregadas do localStorage:", savedDavsCriadas);
+            }
+        } catch (error) {
+            console.error("Erro ao carregar dados do localStorage:", error);
+        }
+    }, []);
+
+    // Salva davsFaturadas no localStorage sempre que mudar
+    useEffect(() => {
+        try {
+            localStorage.setItem('davsFaturadas', JSON.stringify(davsFaturadas));
+            console.log("Davs Faturadas salvas no localStorage:", davsFaturadas);
+        } catch (error) {
+            console.error("Erro ao salvar davsFaturadas no localStorage:", error);
+        }
+    }, [davsFaturadas]);
+
+    // Salva davsCriadas no localStorage sempre que mudar
+    useEffect(() => {
+        try {
+            localStorage.setItem('davsCriadas', JSON.stringify(davsCriadas));
+            console.log("Davs Criadas salvas no localStorage:", davsCriadas);
+        } catch (error) {
+            console.error("Erro ao salvar davsCriadas no localStorage:", error);
+        }
+    }, [davsCriadas]);
 
     return (
         <DavContext.Provider value={{ davsFaturadas, setDavsFaturadas, davsCriadas, setDavsCriadas, davInput, setDavInput, davType, setDavType }}>
