@@ -27,11 +27,9 @@ export function DavProvider({ children }) {
 
             if (savedDavsFaturadas && savedDavsFaturadas.length > 0) {
                 setDavsFaturadas(savedDavsFaturadas);
-                console.log("Davs Faturadas carregadas do localStorage:", savedDavsFaturadas);
             }
             if (savedDavsCriadas && savedDavsCriadas.length > 0) {
                 setDavsCriadas(savedDavsCriadas);
-                console.log("Davs Criadas carregadas do localStorage:", savedDavsCriadas);
             }
         } catch (error) {
             console.error("Erro ao carregar dados do localStorage:", error);
@@ -42,7 +40,6 @@ export function DavProvider({ children }) {
     useEffect(() => {
         try {
             localStorage.setItem('davsFaturadas', JSON.stringify(davsFaturadas));
-            console.log("Davs Faturadas salvas no localStorage:", davsFaturadas);
         } catch (error) {
             console.error("Erro ao salvar davsFaturadas no localStorage:", error);
         }
@@ -52,14 +49,29 @@ export function DavProvider({ children }) {
     useEffect(() => {
         try {
             localStorage.setItem('davsCriadas', JSON.stringify(davsCriadas));
-            console.log("Davs Criadas salvas no localStorage:", davsCriadas);
         } catch (error) {
             console.error("Erro ao salvar davsCriadas no localStorage:", error);
         }
     }, [davsCriadas]);
 
+
+    function deleteById(id, davType) {
+        if (davType == 'dav-criada') {
+            const filteredDavs = davsCriadas.filter((_, index) => {
+                return index != id;
+            });
+            setDavsCriadas(filteredDavs);
+        }
+        if(davType == 'dav-faturada') {
+            const filteredDavs = davsFaturadas.filter((_, index) => {
+                return index != id;
+            });
+            setDavsFaturadas(filteredDavs);
+        }
+    }
+
     return (
-        <DavContext.Provider value={{ davsFaturadas, setDavsFaturadas, davsCriadas, setDavsCriadas, davInput, setDavInput, davType, setDavType }}>
+        <DavContext.Provider value={{ davsFaturadas, setDavsFaturadas, davsCriadas, setDavsCriadas, davInput, setDavInput, davType, setDavType, deleteById }}>
             {children}
         </DavContext.Provider>
     )

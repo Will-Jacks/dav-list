@@ -11,9 +11,17 @@
 
   margin: 20px auto;
 
-  box-shadow: 0px 1px 0px 4px;
-  
-  height: 80vh;
+  /* box-shadow: 0px 1px 0px 4px; */
+  border: 1px solid black;
+  border-radius: 5px;
+  height: 50vh;
   width: 70vw;
   overflow-y: auto;
+}
+
+.render-dav-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
 }

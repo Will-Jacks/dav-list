@@ -1,0 +1,28 @@
+.dav-form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+}
+
+.form-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+.dav-input {
+    height: 30px;
+    width: 300px;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+
+.dav-type-select {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 10vw;
+    max-width: 15vw;
+}   
