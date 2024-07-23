@@ -1,0 +1,17 @@
+.trash-icon {
+    transition: 0.5s;
+}
+
+.trash-icon:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+.check-icon-wrapper {
+    transition: 1s;
+}
+
+.check-icon-wrapper:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}

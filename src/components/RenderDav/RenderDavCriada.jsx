@@ -1,10 +1,10 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faCheck, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { useDavContext } from "../../context/DavContext"
-
+import './davCriada.css';
 export default function RenderDavCriada() {
 
-    const { davsCriadas, deleteById } = useDavContext();
+    const { davsCriadas, deleteById, changeDavType } = useDavContext();
 
     return (
         <div>
@@ -13,7 +13,10 @@ export default function RenderDavCriada() {
                 return (
                     <div key={key} className="render-dav-container">
                         <h3>{item.davInput}</h3>
-                        <FontAwesomeIcon icon={faTrash} onClick={() => deleteById(key, item.davType)} />
+                        <FontAwesomeIcon icon={faTrash} onClick={() => deleteById(key, item.davType)} className="trash-icon"/>
+                        <div className="check-icon-wrapper">
+                            <FontAwesomeIcon icon={faCheck} className="check-icon" onClick={()=> changeDavType(key)}/>
+                        </div>
                     </div>
                 )
             })}

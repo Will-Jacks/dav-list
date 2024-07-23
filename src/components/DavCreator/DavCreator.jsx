@@ -40,7 +40,7 @@ export default function DavCreator() {
                     <option value="dav-criada">Dav lançada</option>
                     <option value="dav-faturada">Dav faturada</option>
                 </select>
-                <button type="submit" className="btn-submit">Finalizar</button>
+                <button type="submit" className="btn-submit">Confirmar</button>
             </form>
             <button onClick={() => clearLocalStorage()}>Limpar tudo</button>
         </div>

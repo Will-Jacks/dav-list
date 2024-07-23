@@ -62,7 +62,7 @@ export function DavProvider({ children }) {
             });
             setDavsCriadas(filteredDavs);
         }
-        if(davType == 'dav-faturada') {
+        if (davType == 'dav-faturada') {
             const filteredDavs = davsFaturadas.filter((_, index) => {
                 return index != id;
             });
@@ -70,8 +70,15 @@ export function DavProvider({ children }) {
         }
     }
 
+    function changeDavType(id) {
+        const changeDav = davsCriadas[id];
+        changeDav.davType = 'dav-faturada';
+        setDavsFaturadas([...davsFaturadas, changeDav]);
+        deleteById(id, 'dav-criada');
+    }
+
     return (
-        <DavContext.Provider value={{ davsFaturadas, setDavsFaturadas, davsCriadas, setDavsCriadas, davInput, setDavInput, davType, setDavType, deleteById }}>
+        <DavContext.Provider value={{ davsFaturadas, setDavsFaturadas, davsCriadas, setDavsCriadas, davInput, setDavInput, davType, setDavType, deleteById, changeDavType }}>
             {children}
         </DavContext.Provider>
     )
