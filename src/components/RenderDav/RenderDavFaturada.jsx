@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useDavContext } from "../../context/DavContext.jsx";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import './davCriada.css';
-export default function     RenderDavFaturada() {
+export default function RenderDavFaturada() {
 
     const { davsFaturadas, deleteById } = useDavContext();
 
